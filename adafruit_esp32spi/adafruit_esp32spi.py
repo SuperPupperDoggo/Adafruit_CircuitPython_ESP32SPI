@@ -239,6 +239,7 @@ class ESP_SPIcontrol:  # pylint: disable=too-many-public-methods, too-many-insta
         *,
         debug=False,
         debug_show_secrets=False,
+        baud=921600,
     ):
         self._debug = debug
         self._debug_show_secrets = debug_show_secrets
@@ -249,7 +250,7 @@ class ESP_SPIcontrol:  # pylint: disable=too-many-public-methods, too-many-insta
         self._sendbuf = bytearray(256)  # buffer for command sending
         self._socknum_ll = [[0]]  # pre-made list of list of socket #
 
-        self._spi_device = SPIDevice(spi, cs_dio, baudrate=921600)
+        self._spi_device = SPIDevice(spi, cs_dio, baudrate=baud)
         self._cs = cs_dio
         self._ready = ready_dio
         self._reset = reset_dio
